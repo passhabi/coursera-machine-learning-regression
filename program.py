@@ -2,7 +2,7 @@ import pandas
 import numpy
 import matplotlib.pyplot as plt
 
-# Import data:
+# import data:
 
 dtype_dict = {'bathrooms': float, 'waterfront': int, 'sqft_above': int, 'sqft_living15': float, 'grade': int,
               'yr_renovated': int, 'price': float, 'bedrooms': float, 'zipcode': str, 'long': float,
@@ -10,7 +10,7 @@ dtype_dict = {'bathrooms': float, 'waterfront': int, 'sqft_above': int, 'sqft_li
               'sqft_basement': int, 'yr_built': int, 'id': str, 'sqft_lot': int, 'view': int}
 
 sales = pandas.read_csv('kc_house_data.csv', dtype=dtype_dict)
-sales = sales.sort(['sqft_living', 'price'])
+sales = sales.sort_values(['sqft_living', 'price'])
 
 ' <--------------------------- Start of Regression functions ---------------------------> '
 
@@ -89,6 +89,7 @@ def get_residual_sum_squares(output, predicted_output):
 
 def polynomial_dataframe(feature, degree):
     """
+    Generate polynomial features up to degree 'degree'.
     :param feature: Is pandas.Series, float, double type
     :param degree: a number
     :return: data frame to the degree power
@@ -155,3 +156,14 @@ def fit_poly_model(train_data, valid_data, feature, output, order):
 
 ' <--------------------------- End of Regression functions ---------------------------> '
 
+# make 15th order sqft_living polynomial:
+poly15_sqft_living = polynomial_dataframe(sales['sqft_living'], 15)
+# fit a model to the poly sqft_living:
+l2_penalty=1.5e-5
+from sklearn.linear_model import Ridge
+model = Ridge(alpha=l2_penalty, normalize=True)
+model.fit(poly15_sqft_living, sales['price'])
+
+# 4. Quiz Question: What’s the learned value for the coefficient of feature power_1?
+print(model.coef_[0])
+# 1.24873306e+02
