@@ -116,7 +116,7 @@ def polynomial_dataframe(feature, degree):
 def fit_poly_model(order, train_data, feature: str, valid_data=None, output: str = 'price',
                    l2_penalty=1e-9,
                    normalization: bool = True, model_plot: bool = False, color_scheme: List[str] = None,
-                   pause_plotting_time=2):
+                   pause_plotting_time=5):
     """
     It makes a polynomial dataframe by feature to the power of 'order' and plots the feature as x and cost as y, It
     fits the model to the polynomial dataframe using sikit-learn.\n
@@ -199,7 +199,7 @@ from sklearn.linear_model import Ridge
 model = Ridge(alpha=l2_small_penalty, normalize=True)
 model.fit(poly15_sqft_living, sales['price'])
 
-# 4. Quiz Question: What’s the learned value for the coefficient of feature power_1?
+# Quiz Question: What’s the learned value for the coefficient of feature power_1?
 # 1.24873306e+02
 
 # 5. and 6.
@@ -210,15 +210,26 @@ set_3 = pandas.read_csv('wk3_kc_house_set_3_data.csv', dtype=dtype_dict)
 set_4 = pandas.read_csv('wk3_kc_house_set_4_data.csv', dtype=dtype_dict)
 
 # 7.
-weights_1, _, _ = fit_poly_model(15, set_1, 'sqft_living', model_plot=True)
-weights_2, _, _ = fit_poly_model(15, set_2, 'sqft_living', model_plot=True)
-weights_3, _, _ = fit_poly_model(15, set_3, 'sqft_living', model_plot=True)
-weights_4, _, _ = fit_poly_model(15, set_4, 'sqft_living', model_plot=True)
+# weights_1, _, _ = fit_poly_model(15, set_1, 'sqft_living', model_plot=True)
+# weights_2, _, _ = fit_poly_model(15, set_2, 'sqft_living', model_plot=True)
+# weights_3, _, _ = fit_poly_model(15, set_3, 'sqft_living', model_plot=True)
+# weights_4, _, _ = fit_poly_model(15, set_4, 'sqft_living', model_plot=True)
 
 # 8. Quiz Question: For the models learned in each of these training sets,
 #   what are the smallest and largest values you learned for the coefficient of feature power_1?
 #   set1: 2.38888336e+04 ,set2: -5.56146435e+04, set3: 4.70987841e+05, set4: -1.45655613e+05
 
+# 9. & 10.
+l2_large_penalty = 1.23e2
+weights_1, _, _ = fit_poly_model(15, set_1, 'sqft_living', l2_penalty=l2_large_penalty, model_plot=True)
+weights_2, _, _ = fit_poly_model(15, set_2, 'sqft_living', l2_penalty=l2_large_penalty, model_plot=True)
+weights_3, _, _ = fit_poly_model(15, set_3, 'sqft_living', l2_penalty=l2_large_penalty, model_plot=True)
+weights_4, _, _ = fit_poly_model(15, set_4, 'sqft_living', l2_penalty=l2_large_penalty, model_plot=True)
 
+# QUIZ QUESTION: For the models learned with regularization in each of these training sets,
+#   what are the smallest and largest values you learned for the coefficient of feature power_1?
 
-
+#   set 1: 5.39103031e+05
+#   set 2: 5.29853025e+05
+#   set 3: 5.33640114e+05
+#   set 4: 5.24562969e+05
