@@ -1,6 +1,7 @@
 import pandas
 import numpy
 import matplotlib.pyplot as plt
+from typing import Union, List, Any
 
 # import data:
 
@@ -112,46 +113,79 @@ def polynomial_dataframe(feature, degree):
     return poly_dataframe
 
 
-def fit_poly_model(train_data, valid_data, feature, output, order):
+def fit_poly_model(order, train_data, feature: str, valid_data=None, output: str = 'price',
+                   l2_penalty=1e-9,
+                   normalization: bool = True, model_plot: bool = False, color_scheme: List[str] = None,
+                   pause_plotting_time=2):
     """
-    It makes a polynomial dataframe by feature to the power of 'order' and plots the feature as x and cost as y, and
-    fit a model to the polynomial dataframe using sikit-learn.\n
+    It makes a polynomial dataframe by feature to the power of 'order' and plots the feature as x and cost as y, It
+    fits the model to the polynomial dataframe using sikit-learn.\n
 
+    :param order:
+    :param train_data:
+    :param feature:
+    :param valid_data:
+    :param output:
+    :param l2_penalty:
+    :param normalization:
+    :param model_plot:
+    :param color_scheme: a list of color, first entry for scatter points and second for plotting. e.g. ['red', 'blue']
+    :param pause_plotting_time:
+    :return:
     """
-    #   an 'order' degree polynomial :
+    # an 'order' degree polynomial :
     poly_data = polynomial_dataframe(train_data[feature], order)
     poly_data[output] = train_data[output]
 
-    #   compute the regression weights for predicting sales[‘price’]
-    #                    based on the 1 degree polynomial feature ‘sqft_living’:
-    from sklearn.linear_model import LinearRegression
-    linear_regression = LinearRegression()
+    # compute the regression weights for predicting sales[‘price’]
+    #   based on the 1 degree polynomial feature ‘sqft_living’:
+    from sklearn.linear_model import Ridge
+    # make a new instance of the object:
+    model = Ridge(alpha=l2_penalty, normalize=normalization)
     #   convert dataframe to numpy array to prevent shape error with sikit-learn:
     x = numpy.array(poly_data.iloc[:, :-1])
     y = numpy.array(poly_data[output]).reshape(-1, 1)
 
-    model = linear_regression.fit(x, y)
+    model.fit(x, y)
 
-    #   store all coefficient in poly1_weights array:
-    # poly_weights = model.intercept_
-    # for i in range(0, len(model.coef_)):
-    #     poly_weights = numpy.append(poly_weights, model.coef_[i])
+    # store all coefficient in poly1_weights array:
+    poly_weights = model.intercept_
+    for i in range(0, len(model.coef_)):
+        poly_weights = numpy.append(poly_weights, model.coef_[i])
 
-    #   produce a scatter plot of the training data (just square feet vs price) with fitted model:
-    # plt.scatter(poly_data['power_1'], poly_data[output])
-    # plt.plot(x[:, 0], model.predict(x))
-    # plt.pause(2)
+    # Plotting the model, features Xs vs observation Y:
+    if model_plot:
+        # produce a scatter plot of the training data (just square feet vs price) with fitted model:
+        if color_scheme is not None:
+            # plot without default color:
+            plt.scatter(poly_data['power_1'], poly_data[output], c=color_scheme[0])
+            plt.plot(x[:, 0], model.predict(x), c=color_scheme[1])
+        else:
+            # plot with default color but in different figures:
+            import random
+            num_figure = random.randint(0, 1000)
+            plt.figure(num_figure)
+            plt.scatter(poly_data['power_1'], poly_data[output])
+            plt.plot(x[:, 0], model.predict(x), c='red')
+            plt.figure(num_figure).show()
+        plt.pause(pause_plotting_time)
 
-    #   compute rss on validation set:
-    poly_data_valid = polynomial_dataframe(valid_data[feature], order)
-    poly_data_valid[output] = valid_data[output]
+    # compute rss:
+    train_rss = get_residual_sum_squares(y, model.predict(x))
+    # compute rss on validation set:
+    if valid_data is None:
+        # Then we don't need validation_rss:
+        validation_rss = None
+    else:
+        poly_data_valid = polynomial_dataframe(valid_data[feature], order)
+        poly_data_valid[output] = valid_data[output]
 
-    x_valid = numpy.array(poly_data_valid.iloc[:, :-1])
-    y_valid = numpy.array(poly_data_valid[output]).reshape(-1, 1)
-    #   return RSS:
-    rss_train = get_residual_sum_squares(y, model.predict(x))
-    rss_valid = get_residual_sum_squares(y_valid, model.predict(x_valid))
-    return rss_train, rss_valid
+        x_valid = numpy.array(poly_data_valid.iloc[:, :-1])
+        y_valid = numpy.array(poly_data_valid[output]).reshape(-1, 1)
+        # get ready validation rss to return:
+        validation_rss = get_residual_sum_squares(y_valid, model.predict(x_valid))
+
+    return poly_weights, train_rss, validation_rss
 
 
 ' <--------------------------- End of Regression functions ---------------------------> '
@@ -159,11 +193,32 @@ def fit_poly_model(train_data, valid_data, feature, output, order):
 # make 15th order sqft_living polynomial:
 poly15_sqft_living = polynomial_dataframe(sales['sqft_living'], 15)
 # fit a model to the poly sqft_living:
-l2_penalty=1.5e-5
+l2_small_penalty = 1.5e-5
 from sklearn.linear_model import Ridge
-model = Ridge(alpha=l2_penalty, normalize=True)
+
+model = Ridge(alpha=l2_small_penalty, normalize=True)
 model.fit(poly15_sqft_living, sales['price'])
 
 # 4. Quiz Question: What’s the learned value for the coefficient of feature power_1?
-print(model.coef_[0])
 # 1.24873306e+02
+
+# 5. and 6.
+# Reading different subset of sales date frame:
+set_1 = pandas.read_csv('wk3_kc_house_set_1_data.csv', dtype=dtype_dict)
+set_2 = pandas.read_csv('wk3_kc_house_set_2_data.csv', dtype=dtype_dict)
+set_3 = pandas.read_csv('wk3_kc_house_set_3_data.csv', dtype=dtype_dict)
+set_4 = pandas.read_csv('wk3_kc_house_set_4_data.csv', dtype=dtype_dict)
+
+# 7.
+weights_1, _, _ = fit_poly_model(15, set_1, 'sqft_living', model_plot=True)
+weights_2, _, _ = fit_poly_model(15, set_2, 'sqft_living', model_plot=True)
+weights_3, _, _ = fit_poly_model(15, set_3, 'sqft_living', model_plot=True)
+weights_4, _, _ = fit_poly_model(15, set_4, 'sqft_living', model_plot=True)
+
+# 8. Quiz Question: For the models learned in each of these training sets,
+#   what are the smallest and largest values you learned for the coefficient of feature power_1?
+#   set1: 2.38888336e+04 ,set2: -5.56146435e+04, set3: 4.70987841e+05, set4: -1.45655613e+05
+
+
+
+
