@@ -1,22 +1,28 @@
 import pandas
 import numpy
 import matplotlib.pyplot as plt
-from typing import Union, List, Any
+from typing import List
 
 # import data:
-
 dtype_dict = {'bathrooms': float, 'waterfront': int, 'sqft_above': int, 'sqft_living15': float, 'grade': int,
               'yr_renovated': int, 'price': float, 'bedrooms': float, 'zipcode': str, 'long': float,
               'sqft_lot15': float, 'sqft_living': float, 'floors': float, 'condition': int, 'lat': float, 'date': str,
               'sqft_basement': int, 'yr_built': int, 'id': str, 'sqft_lot': int, 'view': int}
 
-sales = pandas.read_csv('kc_house_data.csv', dtype=dtype_dict)
-sales = sales.sort_values(['sqft_living', 'price'])
+train_valid_shuffled = pandas.read_csv('wk3_kc_house_train_valid_shuffled.csv', dtype=dtype_dict)
+test = pandas.read_csv('wk3_kc_house_test_data.csv', dtype=dtype_dict)
 
-' <--------------------------- Start of Regression functions ---------------------------> '
+' <-------------------------- Start of Regression functions --------------------------> '
 
 
 def get_numpy_data(data_frame, features_str, output_str):
+    """
+    dataframe preparation
+    :param data_frame:
+    :param features_str:
+    :param output_str:
+    :return: feature_matrix, weights
+    """
     data_frame = data_frame.copy()
     data_frame['constant'] = 1  # add a constant column to an SFrame
     # prepend variable 'constant' to the features list
@@ -46,7 +52,9 @@ def feature_derivative(errors, feature):
 
 def regression_gradient_descent(feature_matrix, output, initial_weights, step_size, tolerance):
     """
-    Gradient descent **Algorithm**
+    **Gradient descent Algorithm**
+
+
     :param feature_matrix:
     :param output:
     :param initial_weights: 1×n numpy array
@@ -88,19 +96,21 @@ def get_residual_sum_squares(output, predicted_output):
     return rss
 
 
-def polynomial_dataframe(feature, degree):
+def polynomial_dataframe(feature: pandas.DataFrame.axes, degree: int):
     """
     Generate polynomial features up to degree 'degree'.
+
+
     :param feature: Is pandas.Series, float, double type
-    :param degree: a number
+    :param degree: to power
     :return: data frame to the degree power
     """
     # assume that degree >= 1
     # initialize the data frame:
 
-    poly_dataframe = pandas.DataFrame()
+    poly_df = pandas.DataFrame()
     # and set poly_dataframe['power_1'] equal to the passed feature
-    poly_dataframe['power_1'] = feature
+    poly_df['power_1'] = feature
     # first check if degree > 1
     if degree > 1:
         # then loop over the remaining degrees:
@@ -108,9 +118,9 @@ def polynomial_dataframe(feature, degree):
             # first we'll give the column a name:
             name = 'power_' + str(power)
             # assign poly_dataframe[name] to be feature^power; use apply(*)
-            poly_dataframe[name] = feature ** power
+            poly_df[name] = feature ** power
 
-    return poly_dataframe
+    return poly_df
 
 
 def fit_poly_model(order, train_data, feature: str, valid_data=None, output: str = 'price',
@@ -188,48 +198,45 @@ def fit_poly_model(order, train_data, feature: str, valid_data=None, output: str
     return poly_weights, train_rss, validation_rss
 
 
+def k_fold_cross_validation(k: int, l2_penalty: float, features: pandas.DataFrame, output: pandas.DataFrame):
+    n = len(output)  # number of data points (observations)
+    RSSes = numpy.zeros(k)  # array list to store RSS for each validation set.
+    for i in range(k):
+        start = int((n * i) / k)  # start index
+        end = int((n * (i + 1)) / k)  # end index
+
+        # split data to valid set and train set:
+        x_valid_set = features[start:end + 1]  # omitted segment for testing training set
+        #   same for the output array:
+        y_valid_set = output[start:end + 1]
+
+        #   assume valid_set with - and train segments with + and [] for selecting area.
+        x_train_set = features[0:start]  # [+++]---++++++++++
+        x_train_set = x_train_set.append(features[end + 1:])  # [+++]---[++++++++++]
+        #   same again for output:
+        y_train_set = output[0:start]
+        y_train_set = y_train_set.append(output[end + 1:])
+
+        # convert to numpy array:
+        features_train = x_train_set.iloc[:, :].values
+        output_train = y_train_set.iloc[:].values
+        #   do the same for validation set
+        features_valid = x_valid_set.iloc[:, :].values
+        output_valid = y_valid_set.iloc[:].values
+
+        # TODO: use my future ridge regression method instead of skiti-learn
+        from sklearn.linear_model import Ridge
+        model = Ridge(l2_penalty, normalize=True)
+        model.fit(features_train, output_train)
+
+        # compute RSS for validation set:
+        prediction = model.predict(features_valid)
+        # store currant RSS:
+        RSSes[i] = get_residual_sum_squares(output_valid, prediction)
+
+    return RSSes.mean()
+
+
 ' <--------------------------- End of Regression functions ---------------------------> '
 
-# make 15th order sqft_living polynomial:
-poly15_sqft_living = polynomial_dataframe(sales['sqft_living'], 15)
-# fit a model to the poly sqft_living:
-l2_small_penalty = 1.5e-5
-from sklearn.linear_model import Ridge
-
-model = Ridge(alpha=l2_small_penalty, normalize=True)
-model.fit(poly15_sqft_living, sales['price'])
-
-# Quiz Question: What’s the learned value for the coefficient of feature power_1?
-# 1.24873306e+02
-
-# 5. and 6.
-# Reading different subset of sales date frame:
-set_1 = pandas.read_csv('wk3_kc_house_set_1_data.csv', dtype=dtype_dict)
-set_2 = pandas.read_csv('wk3_kc_house_set_2_data.csv', dtype=dtype_dict)
-set_3 = pandas.read_csv('wk3_kc_house_set_3_data.csv', dtype=dtype_dict)
-set_4 = pandas.read_csv('wk3_kc_house_set_4_data.csv', dtype=dtype_dict)
-
-# 7.
-# weights_1, _, _ = fit_poly_model(15, set_1, 'sqft_living', model_plot=True)
-# weights_2, _, _ = fit_poly_model(15, set_2, 'sqft_living', model_plot=True)
-# weights_3, _, _ = fit_poly_model(15, set_3, 'sqft_living', model_plot=True)
-# weights_4, _, _ = fit_poly_model(15, set_4, 'sqft_living', model_plot=True)
-
-# 8. Quiz Question: For the models learned in each of these training sets,
-#   what are the smallest and largest values you learned for the coefficient of feature power_1?
-#   set1: 2.38888336e+04 ,set2: -5.56146435e+04, set3: 4.70987841e+05, set4: -1.45655613e+05
-
-# 9. & 10.
-l2_large_penalty = 1.23e2
-weights_1, _, _ = fit_poly_model(15, set_1, 'sqft_living', l2_penalty=l2_large_penalty, model_plot=True)
-weights_2, _, _ = fit_poly_model(15, set_2, 'sqft_living', l2_penalty=l2_large_penalty, model_plot=True)
-weights_3, _, _ = fit_poly_model(15, set_3, 'sqft_living', l2_penalty=l2_large_penalty, model_plot=True)
-weights_4, _, _ = fit_poly_model(15, set_4, 'sqft_living', l2_penalty=l2_large_penalty, model_plot=True)
-
-# QUIZ QUESTION: For the models learned with regularization in each of these training sets,
-#   what are the smallest and largest values you learned for the coefficient of feature power_1?
-
-#   set 1: 5.39103031e+05
-#   set 2: 5.29853025e+05
-#   set 3: 5.33640114e+05
-#   set 4: 5.24562969e+05
+# 12, 13, 14, 15:
