@@ -1,5 +1,5 @@
-import pandas
-import numpy
+import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 from typing import List
 
@@ -9,8 +9,8 @@ dtype_dict = {'bathrooms': float, 'waterfront': int, 'sqft_above': int, 'sqft_li
               'sqft_lot15': float, 'sqft_living': float, 'floors': float, 'condition': int, 'lat': float, 'date': str,
               'sqft_basement': int, 'yr_built': int, 'id': str, 'sqft_lot': int, 'view': int}
 
-train_valid_shuffled = pandas.read_csv('wk3_kc_house_train_valid_shuffled.csv', dtype=dtype_dict)
-test = pandas.read_csv('wk3_kc_house_test_data.csv', dtype=dtype_dict)
+train_valid_shuffled = pd.read_csv('wk3_kc_house_train_valid_shuffled.csv', dtype=dtype_dict)
+test = pd.read_csv('wk3_kc_house_test_data.csv', dtype=dtype_dict)
 
 ' <-------------------------- Start of Regression functions --------------------------> '
 
@@ -30,23 +30,23 @@ def get_numpy_data(data_frame, features_str, output_str):
     # select the columns of data_frame given by the ‘features’ list into the Frame ‘features_frame’
     features_matrix = data_frame[features_str]
     # this will convert the features_frame into a numpy matrix
-    features_matrix = numpy.array(features_matrix)
+    features_matrix = np.array(features_matrix)
     # assign the column of data_frame associated with the target to the variable ‘output_array’
     output_array = data_frame[output_str]
     # this will convert the Array into a numpy array:
-    output_array = numpy.array(output_array).reshape(-1, 1)
+    output_array = np.array(output_array).reshape(-1, 1)
     return features_matrix, output_array
 
 
 def predict_outcome(feature_matrix, weights):
-    predictions = numpy.dot(feature_matrix, weights)
+    predictions = np.dot(feature_matrix, weights)
     return predictions
 
 
 def feature_derivative(errors, feature):
     # -2H^T(y-HW)   =>  -2H^T(error)    =>  2 * H^T * error
     feature = 2 * feature
-    derivative = numpy.dot(feature, errors)
+    derivative = np.dot(feature, errors)
     return derivative
 
 
@@ -63,7 +63,7 @@ def regression_gradient_descent(feature_matrix, output, initial_weights, step_si
     :return:
     """
     converged = False
-    weights = numpy.array(initial_weights).reshape(-1, 1)
+    weights = np.array(initial_weights).reshape(-1, 1)
     while not converged:
         # compute the predictions based on feature_matrix and weights:
         predictions = predict_outcome(feature_matrix, weights)
@@ -79,7 +79,7 @@ def regression_gradient_descent(feature_matrix, output, initial_weights, step_si
             gradient_sum_squares = + derivative ** 2
             # update the weight based on step size and derivative:
             weights[i] = weights[i] + step_size * derivative
-        gradient_magnitude = numpy.sqrt(gradient_sum_squares)
+        gradient_magnitude = np.sqrt(gradient_sum_squares)
         if gradient_magnitude < tolerance:
             converged = True
     return weights
@@ -92,11 +92,11 @@ def get_residual_sum_squares(output, predicted_output):
     :return:
     """
     residual = output - predicted_output
-    rss = numpy.dot(residual.T, residual)
+    rss = np.dot(residual.T, residual)
     return rss
 
 
-def polynomial_dataframe(feature: pandas.DataFrame.axes, degree: int):
+def polynomial_dataframe(feature: pd.DataFrame.axes, degree: int):
     """
     Generate polynomial features up to degree 'degree'.
 
@@ -108,7 +108,7 @@ def polynomial_dataframe(feature: pandas.DataFrame.axes, degree: int):
     # assume that degree >= 1
     # initialize the data frame:
 
-    poly_df = pandas.DataFrame()
+    poly_df = pd.DataFrame()
     # and set poly_dataframe['power_1'] equal to the passed feature
     poly_df['power_1'] = feature
     # first check if degree > 1
@@ -139,7 +139,8 @@ def fit_poly_model(order, train_data, feature: str, valid_data=None, output: str
     :param l2_penalty:
     :param normalization:
     :param model_plot:
-    :param color_scheme: a list of color, first entry for scatter points and second for plotting. e.g. ['red', 'blue']
+    :param color_scheme: a list of color, first entry for scatter points and second for plotting. e.g. ['aqua', 'blue']
+        or ['red', 'crimson']
     :param pause_plotting_time:
     :return:
     """
@@ -152,16 +153,16 @@ def fit_poly_model(order, train_data, feature: str, valid_data=None, output: str
     from sklearn.linear_model import Ridge
     # make a new instance of the object:
     model = Ridge(alpha=l2_penalty, normalize=normalization)
-    #   convert dataframe to numpy array to prevent shape error with sikit-learn:
-    x = numpy.array(poly_data.iloc[:, :-1])
-    y = numpy.array(poly_data[output]).reshape(-1, 1)
+    #   convert data frame to numpy array to prevent shape error with sikit-learn:
+    x = np.array(poly_data.iloc[:, :-1])
+    y = np.array(poly_data[output]).reshape(-1, 1)
 
     model.fit(x, y)
 
     # store all coefficient in poly1_weights array:
     poly_weights = model.intercept_
     for i in range(0, len(model.coef_)):
-        poly_weights = numpy.append(poly_weights, model.coef_[i])
+        poly_weights = np.append(poly_weights, model.coef_[i])
 
     # Plotting the model, features Xs vs observation Y:
     if model_plot:
@@ -190,29 +191,31 @@ def fit_poly_model(order, train_data, feature: str, valid_data=None, output: str
         poly_data_valid = polynomial_dataframe(valid_data[feature], order)
         poly_data_valid[output] = valid_data[output]
 
-        x_valid = numpy.array(poly_data_valid.iloc[:, :-1])
-        y_valid = numpy.array(poly_data_valid[output]).reshape(-1, 1)
+        x_valid = np.array(poly_data_valid.iloc[:, :-1])
+        y_valid = np.array(poly_data_valid[output]).reshape(-1, 1)
         # get ready validation rss to return:
         validation_rss = get_residual_sum_squares(y_valid, model.predict(x_valid))
 
     return poly_weights, train_rss, validation_rss
 
 
-def k_fold_cross_validation(k: int, l2_penalty: float, features: pandas.DataFrame, output: pandas.DataFrame):
+def k_fold_cross_validation(k: int, l2_penalty: float, data: pd.DataFrame, output: pd.DataFrame):
+    from sklearn.linear_model import Ridge
+
     n = len(output)  # number of data points (observations)
-    RSSes = numpy.zeros(k)  # array list to store RSS for each validation set.
+    valid_error = 0
     for i in range(k):
         start = int((n * i) / k)  # start index
         end = int((n * (i + 1)) / k)  # end index
 
         # split data to valid set and train set:
-        x_valid_set = features[start:end + 1]  # omitted segment for testing training set
+        x_valid_set = data[start:end + 1]  # omitted segment for testing training set
         #   same for the output array:
         y_valid_set = output[start:end + 1]
 
         #   assume valid_set with - and train segments with + and [] for selecting area.
-        x_train_set = features[0:start]  # [+++]---++++++++++
-        x_train_set = x_train_set.append(features[end + 1:])  # [+++]---[++++++++++]
+        x_train_set = data[0:start]  # [+++]---++++++++++
+        x_train_set = x_train_set.append(data[end + 1:])  # [+++]---[++++++++++]
         #   same again for output:
         y_train_set = output[0:start]
         y_train_set = y_train_set.append(output[end + 1:])
@@ -225,18 +228,61 @@ def k_fold_cross_validation(k: int, l2_penalty: float, features: pandas.DataFram
         output_valid = y_valid_set.iloc[:].values
 
         # TODO: use my future ridge regression method instead of skiti-learn
-        from sklearn.linear_model import Ridge
         model = Ridge(l2_penalty, normalize=True)
         model.fit(features_train, output_train)
 
         # compute RSS for validation set:
         prediction = model.predict(features_valid)
         # store currant RSS:
-        RSSes[i] = get_residual_sum_squares(output_valid, prediction)
+        valid_error += get_residual_sum_squares(output_valid, prediction)
 
-    return RSSes.mean()
+    return valid_error / k
 
 
 ' <--------------------------- End of Regression functions ---------------------------> '
 
-# 12, 13, 14, 15:
+# 16.Once we have a function to compute the average validation error for a model,
+#   we can write a loop to find the model that minimizes the average validation error:
+poly15_sqft_living = polynomial_dataframe(train_valid_shuffled['sqft_living'], 15)
+validation_errors_dict = {}
+for l2_penalty in np.logspace(3, 9, 13):
+    error = k_fold_cross_validation(5, l2_penalty, poly15_sqft_living, train_valid_shuffled['price'])
+    validation_errors_dict[l2_penalty] = error
+# print dict:
+validation_errors_dict
+
+# Review: seems I get a logical error, check the k_fold_cross_validation and choosing l2_penalty methods, later.
+
+# 17. Quiz Question:
+#   What is the best value for the L2 penalty according to 10-fold validation?
+# Answer:
+#   1000
+
+# 18. Once you found the best value for the L2 penalty using cross-validation,
+#   it is important to retrain a final model on all of the training data using this value of l2_penalty.
+#  This way, your final model will be trained on the entire dataset:
+
+from sklearn.linear_model import Ridge
+
+model = Ridge(alpha=min(validation_errors_dict.keys()))
+# prepare data to fit a model:
+features_list = list(poly15_sqft_living.columns.values)
+data_frame = poly15_sqft_living
+data_frame['price'] = train_valid_shuffled['price']
+feature_matrix, output_array = get_numpy_data(data_frame, features_list, 'price')
+model = model.fit(feature_matrix, output_array)
+
+# lets predict for test data to see the generalization error:
+poly15_test = polynomial_dataframe(test['sqft_living'], 15)
+poly15_test['price'] = test['price']
+x, y = get_numpy_data(poly15_test, features_list, 'price')
+# and now prediction for test:
+prediction = model.predict(x)
+# compute RSS on test data:
+RSS = get_residual_sum_squares(y, prediction)
+print(RSS)
+
+# 19. Quiz Question: Using the best L2 penalty found above, train a model using all training data.
+#   What is the RSS on the TEST data of the model you learn with this L2 penalty?
+# Answer:
+#   1.06586933e+18
