@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/program.py" line="211" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="8e5bb1a5-02cd-4c53-9dfb-3553c12bce1c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -81,33 +78,63 @@
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
     </session>
+    <session id="2141645151">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.16" value="1" />
+          <entry key="project.open.time.50" value="1" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="py" value="22" />
+          <entry key="regression" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="Python" value="22" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="dummy" value="16" />
+          <entry key="py" value="659" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="PLAIN_TEXT" value="16" />
+          <entry key="Python" value="659" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/program.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="255" column="24" selection-start-line="255" selection-start-column="24" selection-end-line="255" selection-end-column="24" />
+            <state relative-caret-position="289">
+              <caret line="17" column="47" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
               <folding>
-                <element signature="e#0#13#0" expanded="true" />
-                <element signature="e#112#522#0" />
-                <element signature="e#848#1753#0" />
-                <element signature="e#1806#1877#0" />
-                <element signature="e#1925#2072#0" />
-                <element signature="e#2175#3486#0" />
-                <marker date="1542398021897" expanded="true" signature="784:7708" ph="..." />
-                <marker date="1542398021897" expanded="true" signature="785:7706" ph="..." />
+                <element signature="e#0#23#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../programming assignments 1/linear_model.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/learnt/regression/k_fold_cross_validation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="36" column="20" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="25" />
+            <state relative-caret-position="204">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+              <folding>
+                <element signature="e#0#54#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -128,7 +155,21 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/readme.md" />
+        <option value="$PROJECT_DIR$/learned-written/regression/get_numpy_data.py" />
+        <option value="$PROJECT_DIR$/learned-written/regression/pe.py" />
+        <option value="$PROJECT_DIR$/learned-written/regression/get_resudiual.py" />
+        <option value="$PROJECT_DIR$/learned-written/regression/predict_outcome.py" />
+        <option value="$PROJECT_DIR$/learned-written/__init__.py" />
+        <option value="$PROJECT_DIR$/learned/regression/predict_outcome.py" />
+        <option value="$PROJECT_DIR$/learned/regression/__init__.py" />
+        <option value="$PROJECT_DIR$/learned/__init__.py" />
+        <option value="$PROJECT_DIR$/learnt/regression/polynomial_dataframe.py" />
+        <option value="$PROJECT_DIR$/learnt/regression/fit_poly_model.py" />
+        <option value="$PROJECT_DIR$/learnt/regression/regression_gradient_descent.py" />
         <option value="$PROJECT_DIR$/program.py" />
+        <option value="$PROJECT_DIR$/learnt/regression/ridge.py" />
+        <option value="$PROJECT_DIR$/learnt/regression/k_fold_cross_validation.py" />
+        <option value="$PROJECT_DIR$/learnt/regression/__init__.py" />
       </list>
     </option>
   </component>
@@ -189,8 +230,19 @@
         <subPane>
           <expand>
             <path>
-              <item name="Programming Assignments I" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Programming Assignments I" type="462c0819:PsiDirectoryNode" />
+              <item name="Programming Assignments II" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Programming Assignments II" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Programming Assignments II" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Programming Assignments II" type="462c0819:PsiDirectoryNode" />
+              <item name="learnt" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Programming Assignments II" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Programming Assignments II" type="462c0819:PsiDirectoryNode" />
+              <item name="learnt" type="462c0819:PsiDirectoryNode" />
+              <item name="regression" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -202,13 +254,14 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="last_opened_file_path" value="C:/ProgramData/Anaconda3/python.exe" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/scikit-learn-master" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Educational\Master’s degree\Machine Learning\Regression - Week 4\Programming Assignments II\learned\regression" />
       <recent name="D:\Educational\Master’s degree\Machine Learning\Regression - Week 4\Programming Assignments I" />
     </key>
   </component>
@@ -307,7 +360,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" type="SLIDING" weight="0.32923076" />
       <window_info anchor="bottom" id="Run" order="2" type="SLIDING" weight="0.31384614" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49928367" visible="true" weight="0.34910485" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49928367" weight="0.34910485" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" type="SLIDING" weight="0.33631712" />
@@ -323,8 +376,8 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="News Feed" order="3" />
       <window_info anchor="right" id="Database" order="4" sideWeight="0.48849106" type="SLIDING" weight="0.26719198" />
-      <window_info active="true" anchor="right" x="-718" y="222" width="365" height="643" id="SciView" order="5" sideWeight="0.5795678" visible="true" weight="0.26146132" />
-      <window_info anchor="right" x="0" y="0" width="314" height="716" id="Documentation" order="6" sideWeight="0.4204322" side_tool="true" weight="1.0" />
+      <window_info anchor="right" x="-718" y="222" width="365" height="643" id="SciView" order="5" sideWeight="0.57726693" visible="true" weight="0.26146132" />
+      <window_info anchor="right" x="0" y="0" width="314" height="716" id="Documentation" order="6" sideWeight="0.42273307" side_tool="true" visible="true" weight="0.26146132" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49936143" type="SLIDING" weight="0.24856733" />
@@ -387,15 +440,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/program.py</url>
-          <line>201</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
         <watch expression="start" />
@@ -442,13 +486,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../programming assignments 1/linear_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" column="20" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/pandas/core/indexes/base.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="856">
@@ -456,19 +493,83 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../programming assignments 1/linear_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="36" column="20" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elementary/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/Elementary/regression" />
+    <entry file="file://$PROJECT_DIR$/learned-written/regression/get_numpy_data.py" />
+    <entry file="file://$PROJECT_DIR$/learned-written/regression/pe.py" />
+    <entry file="file://$PROJECT_DIR$/learned-written/regression/get_resudiual.py" />
+    <entry file="file://$PROJECT_DIR$/learned-written/regression/predict_outcome.py" />
+    <entry file="file://$PROJECT_DIR$/learned-written/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/learnt/regression/predict_outcome.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/learnt/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/learnt/regression/polynomial_dataframe.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/learnt/regression/fit_poly_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-204">
+          <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/learnt/regression/ridge.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/program.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="255" column="24" selection-start-line="255" selection-start-column="24" selection-end-line="255" selection-end-column="24" />
+        <state relative-caret-position="289">
+          <caret line="17" column="47" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#112#522#0" />
-            <element signature="e#848#1753#0" />
-            <element signature="e#1806#1877#0" />
-            <element signature="e#1925#2072#0" />
-            <element signature="e#2175#3486#0" />
-            <marker date="1542398021897" expanded="true" signature="784:7708" ph="..." />
-            <marker date="1542398021897" expanded="true" signature="785:7706" ph="..." />
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/learnt/regression/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="63" selection-start-line="6" selection-start-column="63" selection-end-line="6" selection-end-column="63" />
+          <folding>
+            <element signature="e#0#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/learnt/regression/k_fold_cross_validation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="e#0#54#0" expanded="true" />
           </folding>
         </state>
       </provider>
