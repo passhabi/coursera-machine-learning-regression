@@ -15,5 +15,3 @@ data = pd.read_csv('kc_house_data.csv', dtype=dtype_dict)
 train = pd.read_csv('kc_house_train_data.csv', dtype=dtype_dict)
 test = pd.read_csv('kc_house_test_data.csv', dtype=dtype_dict)
 
-
-

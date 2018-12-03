@@ -4,4 +4,5 @@ from learnt.regression.get_residual_sum_squares import get_residual_sum_squares
 from learnt.regression.polynomial_dataframe import polynomial_dataframe
 from learnt.regression.k_fold_cross_validation import k_fold_cross_validation
 from learnt.regression.fit_poly_model import fit_poly_model
-from learnt.regression.ridge import regression_gradient_descent
+from learnt.regression.least_square_regression import regression_gradient_descent
+from learnt.regression.ridge import ridge_regression_gradient_descent
