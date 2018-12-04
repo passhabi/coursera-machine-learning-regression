@@ -9,4 +9,4 @@ def get_residual_sum_squares(output, predicted_output):
     """
     residual = output - predicted_output
     rss = np.dot(residual.T, residual)
-    return rss
+    return rss[0][0]    # remove the [[brackets]] at the return value

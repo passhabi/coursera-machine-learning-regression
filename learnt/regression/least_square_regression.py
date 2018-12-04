@@ -20,7 +20,7 @@ def regression_gradient_descent(feature_matrix, output, initial_weights, step_si
         # compute the predictions based on feature_matrix and weights:
         predictions = predict_outcome(feature_matrix, weights)
         # compute the errors as predictions - output:
-        errors = output - predictions
+        errors = predictions - output
         gradient_sum_squares = 0  # initialize the gradient
         # while not converged, update each weight individually:
         for i in range(len(weights)):
@@ -40,5 +40,5 @@ def regression_gradient_descent(feature_matrix, output, initial_weights, step_si
 def feature_derivative(errors, feature):
     # -2H^T(y-HW)   =>  -2H^T.(error)    =>  2 * H^T . error
     feature = 2 * feature
-    derivative = np.dot(feature, errors)
+    derivative = np.dot(errors, feature)
     return derivative
