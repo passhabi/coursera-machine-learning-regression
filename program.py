@@ -36,3 +36,7 @@ plt.plot(simple_feature_matrix[:, 1], output, 'k.',  # simple_feature_matrix[:, 
          simple_feature_matrix[:, 1], lr.predict_outcome(simple_feature_matrix, simple_weights_0_penalty), 'b-',
          simple_feature_matrix[:, 1], lr.predict_outcome(simple_feature_matrix, simple_weights_high_penalty), 'r-')
 plt.show()
+
+# 15. Quiz Question: What is the value of the coefficient for sqft_living that you learned with no regularization,
+#   rounded to 1 decimal place? What about the one with high regularization?
+print(simple_weights_0_penalty[1][0])

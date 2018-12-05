@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/learnt/regression/ridge.py" line="30" />
+    <bookmark url="file://$PROJECT_DIR$/learnt/regression/ridge.py" line="31" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8e5bb1a5-02cd-4c53-9dfb-3553c12bce1c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/learnt/regression/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/learnt/regression/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/learnt/regression/get_numpy_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/learnt/regression/get_numpy_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/learnt/regression/get_residual_sum_squares.py" beforeDir="false" afterPath="$PROJECT_DIR$/learnt/regression/get_residual_sum_squares.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/learnt/regression/least_square_regression.py" beforeDir="false" afterPath="$PROJECT_DIR$/learnt/regression/least_square_regression.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/learnt/regression/predict_outcome.py" beforeDir="false" afterPath="$PROJECT_DIR$/learnt/regression/predict_outcome.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/learnt/regression/ridge.py" beforeDir="false" afterPath="$PROJECT_DIR$/learnt/regression/ridge.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/program.py" beforeDir="false" afterPath="$PROJECT_DIR$/program.py" afterDir="false" />
@@ -21,7 +17,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Programming_Assignments_II$program.coverage" NAME="program Coverage Results" MODIFIED="1543952296792" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Programming_Assignments_II$program.coverage" NAME="program Coverage Results" MODIFIED="1544020058954" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Programming_Assignments_I$program.coverage" NAME="program Coverage Results" MODIFIED="1542397597690" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Programming_Assignments_II$ppppp.coverage" NAME="ppppp Coverage Results" MODIFIED="1543951771382" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -92,7 +88,7 @@
     <session id="2141645151">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="8" />
+          <entry key="project.closed" value="9" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.46" value="1" />
@@ -102,50 +98,63 @@
           <entry key="project.open.time.52" value="1" />
           <entry key="project.open.time.54" value="2" />
           <entry key="project.open.time.56" value="1" />
-          <entry key="project.open.time.58" value="2" />
-          <entry key="project.open.time.61" value="1" />
+          <entry key="project.open.time.57" value="1" />
+          <entry key="project.open.time.58" value="3" />
+          <entry key="project.open.time.61" value="2" />
           <entry key="project.open.time.64" value="1" />
-          <entry key="project.opened" value="14" />
+          <entry key="project.opened" value="17" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="141" />
+          <entry key="py" value="164" />
           <entry key="regression" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="141" />
+          <entry key="Python" value="164" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="41" />
+          <entry key="Python Console" value="53" />
           <entry key="dummy" value="49" />
           <entry key="program" value="202" />
-          <entry key="py" value="3908" />
+          <entry key="py" value="4530" />
           <entry key="txt" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="53" />
-          <entry key="Python" value="4151" />
+          <entry key="Python" value="4785" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/program.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="632">
-              <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+            <state relative-caret-position="476">
+              <caret line="28" column="35" lean-forward="true" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/learnt/regression/ridge.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="49" selection-start-line="49" selection-end-line="49" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -159,6 +168,11 @@
         <option value="Python Script" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>pre</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -180,13 +194,13 @@
         <option value="$PROJECT_DIR$/learnt/regression/regression_gradient_descent.py" />
         <option value="$PROJECT_DIR$/learnt/regression/k_fold_cross_validation.py" />
         <option value="$PROJECT_DIR$/learnt/regression/least_square_regression.py" />
-        <option value="$PROJECT_DIR$/learnt/regression/predict_outcome.py" />
-        <option value="$PROJECT_DIR$/learnt/regression/ridge.py" />
         <option value="$PROJECT_DIR$/ppppp.py" />
         <option value="$PROJECT_DIR$/learnt/regression/get_numpy_data.py" />
         <option value="$PROJECT_DIR$/learnt/regression/get_residual_sum_squares.py" />
         <option value="$PROJECT_DIR$/learnt/regression/__init__.py" />
         <option value="$PROJECT_DIR$/program.py" />
+        <option value="$PROJECT_DIR$/learnt/regression/predict_outcome.py" />
+        <option value="$PROJECT_DIR$/learnt/regression/ridge.py" />
       </list>
     </option>
   </component>
@@ -230,6 +244,12 @@
               <item name="Programming Assignments II" type="b2602c69:ProjectViewProjectNode" />
               <item name="Programming Assignments II" type="462c0819:PsiDirectoryNode" />
               <item name="learnt" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Programming Assignments II" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Programming Assignments II" type="462c0819:PsiDirectoryNode" />
+              <item name="learnt" type="462c0819:PsiDirectoryNode" />
+              <item name="regression" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -296,6 +316,9 @@
       <module name="Programming Assignments I" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -336,8 +359,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.ppppp" />
         <item itemvalue="Python.program" />
+        <item itemvalue="Python.ppppp" />
       </list>
     </recent_temporary>
   </component>
@@ -365,7 +388,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="916" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49936143" type="SLIDING" weight="0.24856733" />
       <window_info id="Structure" order="1" sideWeight="0.50063854" side_tool="true" weight="0.24856733" />
@@ -373,7 +395,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" type="SLIDING" weight="0.32923076" />
       <window_info anchor="bottom" id="Run" order="2" type="SLIDING" weight="0.31384614" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49928367" weight="0.3567775" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49928367" visible="true" weight="0.35632184" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" type="SLIDING" weight="0.33631712" />
@@ -382,15 +404,15 @@
       <window_info anchor="bottom" id="Version Control" order="9" type="SLIDING" weight="0.3358876" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5007163" side_tool="true" weight="0.29411766" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" auto_hide="true" x="-756" y="490" width="1396" height="263" id="Terminal" order="12" type="SLIDING" weight="0.26309067" />
-      <window_info anchor="bottom" auto_hide="true" id="Python Console" order="13" weight="0.27877238" />
+      <window_info anchor="bottom" auto_hide="true" x="-756" y="490" width="1396" height="263" id="Terminal" order="12" type="SLIDING" weight="1.0" />
+      <window_info anchor="bottom" auto_hide="true" id="Python Console" order="13" weight="0.27713922" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="News Feed" order="3" />
       <window_info anchor="right" id="Database" order="4" sideWeight="0.48849106" type="SLIDING" weight="0.26719198" />
-      <window_info anchor="right" x="-718" y="222" width="365" height="643" id="SciView" order="5" sideWeight="0.56725144" visible="true" weight="0.25573066" />
-      <window_info anchor="right" x="0" y="0" width="314" height="716" id="Documentation" order="6" sideWeight="0.43274853" side_tool="true" weight="0.3230659" />
+      <window_info active="true" anchor="right" x="-718" y="222" width="365" height="643" id="SciView" order="5" sideWeight="0.5575397" visible="true" weight="0.25501433" />
+      <window_info anchor="right" x="0" y="0" width="314" height="716" id="Documentation" order="6" sideWeight="0.44246033" side_tool="true" visible="true" weight="0.25501433" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49936143" type="SLIDING" weight="0.24856733" />
@@ -408,14 +430,14 @@
       <window_info anchor="bottom" id="Version Control" order="9" type="SLIDING" weight="0.3358876" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5007163" side_tool="true" weight="0.29411766" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" auto_hide="true" x="-756" y="490" width="1396" height="263" id="Terminal" order="12" type="SLIDING" weight="0.26309067" />
-      <window_info anchor="bottom" auto_hide="true" id="Python Console" order="13" visible="true" weight="0.30690536" />
+      <window_info anchor="bottom" auto_hide="true" x="-756" y="490" width="1396" height="263" id="Terminal" order="12" type="SLIDING" weight="1.0" />
+      <window_info anchor="bottom" auto_hide="true" id="Python Console" order="13" weight="0.27877238" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="News Feed" order="3" />
       <window_info anchor="right" id="Database" order="4" sideWeight="0.48849106" type="SLIDING" weight="0.26719198" />
-      <window_info anchor="right" x="-718" y="222" width="365" height="643" id="SciView" order="5" sideWeight="0.56725144" weight="0.31375358" />
+      <window_info anchor="right" x="-718" y="222" width="365" height="643" id="SciView" order="5" sideWeight="0.56725144" visible="true" weight="0.25573066" />
       <window_info anchor="right" x="0" y="0" width="314" height="716" id="Documentation" order="6" sideWeight="0.43274853" side_tool="true" weight="0.3230659" />
     </layout-to-restore>
   </component>
@@ -454,6 +476,13 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/learnt/regression/ridge.py</url>
+          <line>46</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -462,11 +491,6 @@
         </breakpoint>
       </default-breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="weights" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/readme.md">
@@ -565,77 +589,62 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/m_codes.py" />
+    <entry file="file://$PROJECT_DIR$/ppppp.py" />
+    <entry file="file://$PROJECT_DIR$/learnt/regression/get_residual_sum_squares.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://C:/ProgramData/Anaconda3/Lib/codecs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="308" selection-start-line="308" selection-end-line="308" />
+        <state relative-caret-position="229">
+          <caret line="310" selection-start-line="310" selection-end-line="310" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/learnt/regression/predict_outcome.py">
+    <entry file="file://$PROJECT_DIR$/learnt/regression/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/m_codes.py">
+    <entry file="file://$PROJECT_DIR$/learnt/regression/get_numpy_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="89" column="8" selection-start-line="89" selection-start-column="8" selection-end-line="89" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ppppp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="93" lean-forward="true" selection-start-line="10" selection-start-column="93" selection-end-line="10" selection-end-column="93" />
+        <state relative-caret-position="323">
+          <caret line="19" column="47" lean-forward="true" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/learnt/regression/get_numpy_data.py">
+    <entry file="file://$PROJECT_DIR$/learnt/regression/predict_outcome.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="40" lean-forward="true" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="55" />
+        <state relative-caret-position="170">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/program.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="35" lean-forward="true" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/learnt/regression/ridge.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="67" column="57" selection-start-line="67" selection-start-column="57" selection-end-line="67" selection-end-column="57" />
+        <state relative-caret-position="323">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/learnt/regression/get_residual_sum_squares.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="52" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/learnt/regression/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/program.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="632">
-          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>

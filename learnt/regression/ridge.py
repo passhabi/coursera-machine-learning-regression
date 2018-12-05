@@ -12,47 +12,53 @@ def feature_derivative_ridge(errors, feature, weight, l2_penalty: float, feature
     Parameters:
     ----------
     :param errors: ndarray
-    :param feature: numpy arraylike (matrix)
-    :param feature_is_constant: Set true when given feature is a constant.
+    :param feature: column of a feature.
+    :param feature_is_constant: Set true when given column of a feature is a constant.
     :param weight: ndarray
     :param l2_penalty: (lambda) Regularization tuning parameter
     :return: derivation (ndarray)
     """
     # (y-HW)ᵀ(y-HW) + λ |W|²    is our cost function. to derive this; we'll get following:
     # -2Hᵀ(y-HW) + 2λW
+
     # IMPORTANT: We will not regularize the constant. Thus, in the case of the constant,
     #   the derivative is just twice the sum of the errors (without the 2λw[0] term).
     # If feature_is_constant is True, derivative is twice the dot product of errors and feature
-    # Otherwise, derivative is twice the dot product plus 2*l2_penalty*weight
     derivative = 2 * np.dot(feature, errors)  # 1×n dot product n×1 gives us a scalar
     if not feature_is_constant:
-        derivative = derivative + 2 * l2_penalty * weight
-    # Noticed omitted -1?! We are adding it at the updating weights term (at gradient decent function).
+        # Otherwise, derivative is twice the dot product plus 2*l2_penalty*weight
+        derivative = derivative + 2 * (l2_penalty * weight)
+    # Noticed omitted -1?! We are adding it at the updating weights term (at ridge gradient decent function).
     return derivative
 
 
-'To test your feature derivative function, run the following: '
-# import pandas as pd
-# dtype_dict = {'bathrooms': float, 'waterfront': int, 'sqft_above': int, 'sqft_living15': float, 'grade': int,
-#               'yr_renovated': int, 'price': float, 'bedrooms': float, 'zipcode': str, 'long': float,
-#               'sqft_lot15': float, 'sqft_living': float, 'floors': float, 'condition': int, 'lat': float, 'date': str,
-#               'sqft_basement': int, 'yr_built': int, 'id': str, 'sqft_lot': int, 'view': int}
-#
-# data = pd.read_csv('kc_house_data.csv', dtype=dtype_dict)
-# from learnt.regression import get_numpy_data
-# example_features, example_output = get_numpy_data(data, ['sqft_living'], 'price')
-# my_weights = np.array([1., 10.])
-# test_predictions = predict_outcome(example_features, my_weights)
-# errors = test_predictions - example_output.T  # prediction errors
-#
-# # next two lines should print the same values
-# print(feature_derivative_ridge(errors, example_features[:, 1], my_weights[1], 1, False))
-# print(np.sum(errors * example_features[:, 1]) * 2 + 20.)
-# print('')
-#
-# # next two lines should print the same values
-# print(feature_derivative_ridge(errors, example_features[:, 0], my_weights[0], 1, True))
-# print(np.sum(errors) * 2.)
+'''
+# To test your feature derivative function, run the following:
+
+import pandas as pd
+from learnt.regression import get_numpy_data
+from learnt.regression import predict_outcome
+
+dtype_dict = {'bathrooms': float, 'waterfront': int, 'sqft_above': int, 'sqft_living15': float, 'grade': int,
+              'yr_renovated': int, 'price': float, 'bedrooms': float, 'zipcode': str, 'long': float,
+              'sqft_lot15': float, 'sqft_living': float, 'floors': float, 'condition': int, 'lat': float, 'date': str,
+              'sqft_basement': int, 'yr_built': int, 'id': str, 'sqft_lot': int, 'view': int}
+
+df = pd.read_csv('kc_house_data.csv', dtype=dtype_dict)
+example_features, example_output = get_numpy_data(df, ['sqft_living'], 'price')
+my_weights = np.array([1., 10.])
+test_predictions = predict_outcome(example_features, my_weights)
+errors = test_predictions - example_output  # prediction errors
+
+# next two lines should print the same values
+print(feature_derivative_ridge(errors, example_features[:, 1], my_weights[1], 1, False)[0])
+print(np.sum(errors * example_features[:, 1]) * 2 + 20.)
+print('')
+
+# next two lines should print the same values
+print(feature_derivative_ridge(errors, example_features[:, 0], my_weights[0], 1, True)[0])
+print(np.sum(errors) * 2.)
+'''
 
 
 def ridge_regression_gradient_descent(feature_matrix, output, initial_weights: List[float], step_size,
@@ -67,7 +73,7 @@ def ridge_regression_gradient_descent(feature_matrix, output, initial_weights: L
         # compute the predictions using your predict_output() function
         predictions = predict_outcome(feature_matrix, weights)
         # compute the errors as predictions - output
-        errors = predictions - output  # predictions is n 1 so we need output to be n 1 too
+        errors = predictions - output  # predictions is n×1 so we need output to be n×1 too
 
         for i in range(len(weights)):  # loop over each weight
             # Recall that feature_matrix[:,i] is the feature column associated with weights[i]
