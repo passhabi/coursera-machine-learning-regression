@@ -22,4 +22,4 @@ def get_numpy_data(data_frame, features: List[str], output: str):
     output_array = data_frame[output]
     # this will convert the Array into a numpy array:
     output_array = np.array(output_array)
-    return features_matrix, output_array.reshape(-1, 1)
+    return features_matrix, output_array

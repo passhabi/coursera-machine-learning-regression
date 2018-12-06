@@ -24,7 +24,11 @@ def feature_derivative_ridge(errors, feature, weight, l2_penalty: float, feature
     # IMPORTANT: We will not regularize the constant. Thus, in the case of the constant,
     #   the derivative is just twice the sum of the errors (without the 2λw[0] term).
     # If feature_is_constant is True, derivative is twice the dot product of errors and feature
+    errors = np.reshape(errors, -1, 1)  # need error to be a n×1 vector
     derivative = 2 * np.dot(feature, errors)  # 1×n dot product n×1 gives us a scalar
+    # simple form of code above:
+    # derivative = feature * errors
+    # derivative = 2 * sum(derivative)
     if not feature_is_constant:
         # Otherwise, derivative is twice the dot product plus 2*l2_penalty*weight
         derivative = derivative + 2 * (l2_penalty * weight)
@@ -51,12 +55,12 @@ test_predictions = predict_outcome(example_features, my_weights)
 errors = test_predictions - example_output  # prediction errors
 
 # next two lines should print the same values
-print(feature_derivative_ridge(errors, example_features[:, 1], my_weights[1], 1, False)[0])
+print(feature_derivative_ridge(errors, example_features[:, 1], my_weights[1], 1, False))
 print(np.sum(errors * example_features[:, 1]) * 2 + 20.)
 print('')
 
 # next two lines should print the same values
-print(feature_derivative_ridge(errors, example_features[:, 0], my_weights[0], 1, True)[0])
+print(feature_derivative_ridge(errors, example_features[:, 0], my_weights[0], 1, True))
 print(np.sum(errors) * 2.)
 '''
 
