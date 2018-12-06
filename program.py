@@ -33,8 +33,10 @@ simple_weights_high_penalty = lr.ridge_regression_gradient_descent(simple_featur
 #   no regularization and the red line is for the one with high regularization.)
 plt.plot(simple_feature_matrix[:, 1], output, 'k.',  # simple_feature_matrix[:, :] contains 1 constant and sqft_living
          # which we don't care about constant at plotting.
-         simple_feature_matrix[:, 1], lr.predict_outcome(simple_feature_matrix, simple_weights_0_penalty), 'b-',
-         simple_feature_matrix[:, 1], lr.predict_outcome(simple_feature_matrix, simple_weights_high_penalty), 'r-')
+         simple_feature_matrix[:, 1],
+         lr.predict_outcome(simple_feature_matrix, simple_weights_0_penalty).reshape(-1, 1), 'b-',
+         simple_feature_matrix[:, 1],
+         lr.predict_outcome(simple_feature_matrix, simple_weights_high_penalty).reshape(-1, 1), 'r-')
 plt.show()
 
 # 15. Quiz Question: What is the value of the coefficient for sqft_living that you learned with no regularization,
