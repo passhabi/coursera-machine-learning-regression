@@ -24,7 +24,7 @@ def feature_derivative_ridge(errors, feature, weight, l2_penalty: float, feature
     # IMPORTANT: We will not regularize the constant. Thus, in the case of the constant,
     #   the derivative is just twice the sum of the errors (without the 2λw[0] term).
     # If feature_is_constant is True, derivative is twice the dot product of errors and feature
-    errors = np.reshape(errors, -1, 1)  # need error to be a n×1 vector
+    errors = np.reshape(errors, [-1, 1])  # need error to be a n×1 vector
     derivative = 2 * np.dot(feature, errors)  # 1×n dot product n×1 gives us a scalar
     # simple form of code above:
     # derivative = feature * errors
