@@ -8,7 +8,7 @@ def get_numpy_data(data_frame, features: List[str], output: str):
     :param data_frame:
     :param features:
     :param output:
-    :return: feature_matrix, weights
+    :return: feature_matrix, output
     """
     data_frame = data_frame.copy()
     data_frame['constant'] = 1  # add a constant column to an SFrame
