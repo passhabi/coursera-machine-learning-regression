@@ -1,16 +1,16 @@
 import numpy as np
 
 
-def normalize_features(feature_matrix: np.ndarray):
+def normalize_features(feature_matrix):
     """Normalizes columns of a given feature matrix.
 
     The function returns a pair ‘(normalized_features, norms)’,
     where the second item contains the norms of original
 
     :param feature_matrix:
-        a matrix of features
+        an ndarray matrix or a data frame of features
     :return:
-        normalized features as matrix and its norms
+        return normalized features as matrix and also the norms of feature matrix
     """
 
     # normalization formula: hj(x) / √ ∑ hj(x)²

@@ -1,2 +1,4 @@
 .idea/
 venv/
+learnt/__pycache__/
+learnt/regression/__pycache__/
