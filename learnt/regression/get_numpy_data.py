@@ -20,11 +20,10 @@ def get_numpy_data(data_frame, features: List[str], output: str):
         List[str] name of the features
     :param output:
         str name of the Y or output column in data frame
-        ###
     :return: feature_matrix, output
 
     """
-    if output not in data_frame:    # check if output columns exists in data frame
+    if output not in data_frame:    # check if output column exists in data frame
         raise ImportError(output, 'is not exist in the data frame')
 
     data_frame = data_frame.copy()

@@ -38,10 +38,23 @@ print(ro)
 # the corresponding weight w[i] is sent to zero. Now suppose we were to take one step of coordinate descent
 # on either feature 1 or feature 2. What range of values of l1_penalty would not set w[1] zero,
 # but would set w[2] to zero, if we were to take a step in that coordinate?
-print(round(2 * ro[2]), ' up to ', round(2 * ro[1]))
+print('of range of values', round(2 * ro[2]), ' up to ', round(2 * ro[1]),
+      'l1_penalty would not set w[1] zero, but would set w[2] to zero')
 # 161933396 up to 175878940
 
 # 11. Quiz Question: What range of values of l1_penalty would set both w[1] and w[2] to zero,
 # if we were to take a step in that coordinate?
-print('grater than', round(2 * ro[1]))
+print('grater than', round(2 * ro[1]), 'l1_penalty would set both w[1] and w[2] to zero')
 
+# 14. Let us now go back to the simple model with 2 features:
+# ‘sqft_living’ and ‘bedrooms’. Using ‘get_numpy_data’ (or equivalent), extract the feature matrix and
+#   the output array from from the house data frame.
+# Then normalize the feature matrix using ‘normalized_features()’ function.
+# Using the following parameters, learn the weights on the sales dataset.
+#
+# Initial weights = all zeros
+# L1 penalty = 1e7
+# Tolerance = 1.0
+
+simple_weights = lr.lasso_cyclical_coordinate_descent(feature_matrix, output, initial_weights=[0., 0., 0.],
+                                                      l1_penalty=1e7, tolerance=1.0)
