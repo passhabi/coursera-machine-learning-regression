@@ -1,6 +1,7 @@
 import numpy as np
 from learnt.regression import predict_outcome
 
+
 def lasso_coordinate_descent_step(index, feature_matrix, output, weights, l1_penalty):
     """ coordinate descent that minimizes the cost function over a single feature i.
 
@@ -44,7 +45,8 @@ print(lasso_coordinate_descent_step(1, np.array([[3. / math.sqrt(13), 1. / math.
 '''
 
 
-def lasso_cyclical_coordinate_descent(feature_matrix, output, initial_weights, l1_penalty, tolerance):
+def lasso_cyclical_coordinate_descent(feature_matrix: np.ndarray, output: np.ndarray, initial_weights: list,
+                                      l1_penalty: float, tolerance: float):
     """ Cyclical coordinate descent.
 
         Cyclical coordinate descent where we optimize coordinates 0, 1, ..., (d-1) in order and repeat.
@@ -63,7 +65,7 @@ def lasso_cyclical_coordinate_descent(feature_matrix, output, initial_weights, l
     :param tolerance:
     :return: ndarray obtained weights by l1_penalty
     """
-    d = len(initial_weights)    # number of coordinates (W or features)
+    d = len(initial_weights)  # number of coordinates (W or features)
     weights = np.array(initial_weights)  # make sure its a numpy array
     diff_weights = np.zeros(d)  # store magnitude of each step we take
     converged = False
@@ -83,3 +85,20 @@ def lasso_cyclical_coordinate_descent(feature_matrix, output, initial_weights, l
         if max_step < tolerance:
             converged = True
     return weights
+
+
+def get_included_features_in_model(features_list: list, weights: np.ndarray):
+    """ What features are included in your lasso model?
+
+    :param features_list: string list of features name
+    :param weights: model weight. intercept must be included
+    :return: a dict, a pair of feature name and corresponding weight.
+    """
+    all_features = ['constant'] + features_list
+    included_features = {}
+    for i in range(len(weights)):
+        if not weights[i] == 0:  # if corresponding weight of features has a value (not zero), then print it.
+            # these are the features that our model included:
+            # print(all_features[i], ': ', weights[i])
+            included_features[all_features[i]] = weights[i]
+    return included_features

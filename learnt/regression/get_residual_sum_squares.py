@@ -8,5 +8,6 @@ def get_residual_sum_squares(output, predicted_output):
     :return:
     """
     residual = output - predicted_output
-    rss = np.dot(residual.T, residual)
-    return rss[0][0]    # remove the [[brackets]] at the return value
+    square = residual * residual
+    rss = square.sum()
+    return rss
