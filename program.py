@@ -8,5 +8,3 @@ dtype_dict = {'bathrooms': float, 'waterfront': int, 'sqft_above': int, 'sqft_li
               'yr_renovated': int, 'price': float, 'bedrooms': float, 'zipcode': str, 'long': float,
               'sqft_lot15': float, 'sqft_living': float, 'floors': float, 'condition': int, 'lat': float, 'date': str,
               'sqft_basement': int, 'yr_built': int, 'id': str, 'sqft_lot': int, 'view': int}
-
-df = pd.read_csv('kc_house_data.csv', dtype=dtype_dict)
