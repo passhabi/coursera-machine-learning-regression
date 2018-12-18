@@ -8,6 +8,6 @@ def get_residual_sum_squares(output, predicted_output):
     :return:
     """
     residual = output - predicted_output
-    square = residual * residual
+    square = residual ** 2
     rss = square.sum()
     return rss

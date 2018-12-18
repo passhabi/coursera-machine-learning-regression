@@ -9,3 +9,4 @@ from learnt.regression.ridge import ridge_regression_gradient_descent
 from learnt.regression.normalize_features import normalize_features
 from learnt.regression.lasso import lasso_cyclical_coordinate_descent
 from learnt.regression.lasso import get_included_features_in_model
+from learnt.regression.knn import predict_output as knn_predict_output
